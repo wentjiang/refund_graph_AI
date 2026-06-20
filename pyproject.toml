@@ -1,0 +1,37 @@
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "refund-graph-ai"
+version = "0.1.0"
+description = "Practice project for an AI-powered refund workflow graph"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+authors = [{ name = "refund-graph-ai team", email = "dev@example.com" }]
+dependencies = []
+
+[project.scripts]
+refund-graph-ai = "refund_graph_ai.main:main"
+
+[tool.poetry]
+packages = [{ include = "refund_graph_ai", from = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.13,<3.14"
+
+[tool.poetry.group.dev.dependencies]
+pytest = ">=8.2.0"
+ruff = ">=0.6.0"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
