@@ -17,6 +17,7 @@ dependencies = [
 
 [project.scripts]
 refund-graph-ai = "refund_graph_ai.main:main"
+refund-graph-ai-interactive = "refund_graph_ai.main:main_interactive"
 
 [tool.poetry]
 packages = [{ include = "refund_graph_ai", from = "src" }]

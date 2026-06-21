@@ -49,14 +49,41 @@ This demo uses a local Ollama server. Before running the workflow, make sure Oll
 poetry run refund-graph-ai
 ```
 
-### 5. Run tests
+### 5. Run the interactive entrypoint
+
+```bash
+poetry run refund-graph-ai-interactive
+```
+
+### 6. Run tests
 
 ```bash
 poetry run pytest
 ```
 
-### 6. Optional: run lint checks
+### 7. Optional: run lint checks
 
 ```bash
 poetry run ruff check .
+```
+
+### 8. Local debug logging
+
+By default, workflow logs are quiet. You can enable node-level logs with an environment variable:
+
+```bash
+REFUND_GRAPH_AI_LOG_LEVEL=DEBUG poetry run refund-graph-ai
+```
+
+Use INFO for less noise:
+
+```bash
+REFUND_GRAPH_AI_LOG_LEVEL=INFO poetry run refund-graph-ai-interactive
+```
+
+When model linking fails, first check Ollama service and local model list:
+
+```bash
+curl -s http://localhost:11434/api/tags
+ollama list
 ```
