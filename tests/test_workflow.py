@@ -25,12 +25,12 @@ def test_negotiation_path() -> None:
 
 
 def test_intent_parse_failure_falls_back_and_continues(monkeypatch) -> None:
-    from refund_graph_ai import workflow
+    from refund_graph_ai.nodes import intent_parser
 
     def raise_failure(_: str) -> tuple[bool, str]:
         raise RuntimeError("forced intent failure")
 
-    monkeypatch.setattr(workflow, "_extract_user_intent_via_llm", raise_failure)
+    monkeypatch.setattr(intent_parser, "_extract_user_intent_via_llm", raise_failure)
 
     user_input = "衣服质量太差了，标签我已经剪掉了，必须全款退！"
     state, messages = run_workflow(user_input=user_input, item_price=600.0)
