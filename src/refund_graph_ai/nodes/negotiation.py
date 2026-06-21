@@ -40,12 +40,12 @@ def negotiate_customer_care(state: WorkflowState) -> WorkflowState:
             error_msg = _merge_error(state, f"negotiation fallback: {exc}")
 
     negotiation_log = list(state.get("negotiation_log", []))
-    negotiation_log.append(negotiation_text)
+    negotiation_log.append(negotiation_text)  # will be propagated to user via run_workflow()
 
     output = {
         "refund_amount": refund_amount,
         "coupon_issued": coupon_issued,
-        "negotiation_log": negotiation_log,
+        "negotiation_log": negotiation_log,  # output to workflow state, then to user messages
         "error_msg": error_msg,
     }
     LOGGER.debug("node=negotiate_customer_care end output=%s", output)

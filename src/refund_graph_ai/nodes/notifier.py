@@ -22,7 +22,7 @@ def generate_final_notification(state: WorkflowState) -> WorkflowState:
         "根据最终的退款金额和优惠券状态，生成一封正式的结案通知。"
         f"退款金额：{state['refund_amount']:.2f}。"
         f"优惠券状态：{'已发放' if state.get('coupon_issued', False) else '未发放'}。"
-        "要求措辞得体，说明到账时间和优惠券使用方式。"
+        "要求措辞得体，说明到账时间和优惠券使用方式。内容长度不能太长, 不能显得啰嗦"
     )
 
     try:

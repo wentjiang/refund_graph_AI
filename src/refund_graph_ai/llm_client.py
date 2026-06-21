@@ -7,6 +7,11 @@ from typing import Any
 from urllib import error, request
 
 try:
+    import colorlog
+except ImportError:  # pragma: no cover - for minimal installations
+    colorlog = None  # type: ignore[assignment]
+
+try:
     from langchain_ollama import ChatOllama
 except ImportError:  # pragma: no cover - installed in normal runs
     ChatOllama = None  # type: ignore[assignment]
@@ -20,9 +25,21 @@ LOGGER = logging.getLogger("refund_graph_ai.workflow")
 
 if not LOGGER.handlers:
     _handler = logging.StreamHandler()
-    _handler.setFormatter(
-        logging.Formatter("%(asctime)s %(levelname)s %(name)s - %(message)s")
-    )
+    if colorlog:
+        _formatter = colorlog.ColoredFormatter(
+            "%(log_color)s%(asctime)s %(levelname)-8s %(name)s%(reset)s - %(message)s",
+            log_colors={
+                "DEBUG": "cyan",
+                "INFO": "green",
+                "WARNING": "yellow",
+                "ERROR": "red",
+                "CRITICAL": "red,bg_white",
+            },
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
+    else:
+        _formatter = logging.Formatter("%(asctime)s %(levelname)s %(name)s - %(message)s")
+    _handler.setFormatter(_formatter)
     LOGGER.addHandler(_handler)
     LOGGER.propagate = False
 

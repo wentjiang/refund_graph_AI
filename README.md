@@ -55,19 +55,28 @@ poetry run refund-graph-ai
 poetry run refund-graph-ai-interactive
 ```
 
-### 6. Run tests
+### 6. Export workflow graph
+
+```bash
+poetry run refund-graph-ai-graph
+```
+
+This writes `graph.mmd` and tries to render `graph.png` if Mermaid CLI is installed.
+If Mermaid CLI is unavailable, it will still export `graph.mmd`.
+
+### 7. Run tests
 
 ```bash
 poetry run pytest
 ```
 
-### 7. Optional: run lint checks
+### 8. Optional: run lint checks
 
 ```bash
 poetry run ruff check .
 ```
 
-### 8. Local debug logging
+### 9. Local debug logging
 
 By default, workflow logs are quiet. You can enable node-level logs with an environment variable:
 
