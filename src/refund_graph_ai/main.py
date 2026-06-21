@@ -9,6 +9,8 @@ def main() -> None:
     print(f"policy_passed={state.policy_passed}")
     print(f"refund_amount={state.refund_amount:.2f}")
     print(f"coupon_issued={state.coupon_issued}")
+    if state.error_msg:
+        print(f"error_msg={state.error_msg}")
     for msg in messages:
         print(msg)
 

@@ -9,7 +9,11 @@ description = "Practice project for an AI-powered refund workflow graph"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
 authors = [{ name = "refund-graph-ai team", email = "dev@example.com" }]
-dependencies = []
+dependencies = [
+	"langgraph>=0.2.0",
+	"langchain-core>=0.3.0",
+	"langchain-ollama>=0.2.0",
+]
 
 [project.scripts]
 refund-graph-ai = "refund_graph_ai.main:main"
@@ -19,6 +23,9 @@ packages = [{ include = "refund_graph_ai", from = "src" }]
 
 [tool.poetry.dependencies]
 python = ">=3.13,<3.14"
+langgraph = ">=0.2.0"
+langchain-core = ">=0.3.0"
+langchain-ollama = ">=0.2.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=8.2.0"

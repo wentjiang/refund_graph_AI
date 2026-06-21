@@ -41,6 +41,8 @@ From the project root directory:
 poetry install
 ```
 
+This demo uses a local Ollama server. Before running the workflow, make sure Ollama is available at `http://localhost:11434` and that a `qwen`-based model has been pulled locally.
+
 ### 4. Run the demo entrypoint
 
 ```bash
